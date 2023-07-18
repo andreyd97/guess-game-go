@@ -21,6 +21,7 @@ func main() {
 
 	reader := bufio.NewReader(os.Stdin)
 
+	success := false
 	for guesses := 0; guesses < 10; guesses++ {
 
 		fmt.Println("You have", 10-guesses, "guesses left.")
@@ -44,8 +45,12 @@ func main() {
 		} else if guess > target {
 			fmt.Println("Oops. Your guess was HIGH")
 		} else {
+			success = true
 			fmt.Println("Good job! You guessed it!")
 			break
 		}
+	}
+	if !success {
+		fmt.Println("Sorry, you didn't guess my number. It was:", target)
 	}
 }
